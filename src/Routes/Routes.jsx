@@ -3,6 +3,9 @@ import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Home/Login/Login";
 import Register from "../pages/Home/Register/Register";
+import Blogs from "../pages/Home/Blogs/Blogs";
+import AllToys from "../pages/Home/AllToys/AllToys";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +23,14 @@ const router = createBrowserRouter([
         {
           path: '/register',
           element: <Register></Register>
+        },
+        {
+          path: '/blogs',
+          element: <Blogs></Blogs>
+        },
+        {
+          path: '/allToys',
+          element: <PrivateRoute><AllToys></AllToys></PrivateRoute>
         }
       ]
     },
