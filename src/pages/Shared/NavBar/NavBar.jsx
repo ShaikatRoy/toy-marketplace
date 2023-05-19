@@ -14,13 +14,21 @@ const NavBar = () => {
     const navItems = <>
         <li><Link>Home</Link></li>
         <li><Link to="/allToys">All Toys</Link></li>
-        <li><Link>My Toys</Link></li>
-        <li><Link>Add A Toy</Link></li>
+        {user && (
+      <>
+        <li>
+          <Link to="/myToys">My Toys</Link>
+        </li>
+        <li>
+          <Link to="/addAtoy">Add A Toy</Link>
+        </li>
+      </>
+    )}
         <li><Link to="/blogs">Blogs</Link></li>
     </>
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 h-24 mb-4">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -30,7 +38,9 @@ const NavBar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">Figure Mania</a>
+                <Link to="/">
+                    <img src="https://i.ibb.co/Qmn8X1Y/Black-White-Minimalist-Business-Logo.png" alt="" />
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
