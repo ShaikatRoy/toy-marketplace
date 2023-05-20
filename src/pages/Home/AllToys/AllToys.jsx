@@ -7,7 +7,7 @@ const AllToys = () => {
     useEffect(() => {
         fetch('http://localhost:5000/toys')
             .then(res => res.json())
-            .then(data => setAllToys(data));
+            .then(data => setAllToys(data.slice(0, 20)));
     }, [])
 
     return (
@@ -29,12 +29,12 @@ const AllToys = () => {
                         </tr>
                     </thead>
                     <tbody>
-                       {
-                           allToys.map(allToy => <AllToysRow
-                                key={allToy.key}
-                                allToy={allToy}
-                           ></AllToysRow>)
-                       }
+                    {allToys.map(allToy => (
+                                <AllToysRow
+                                    key={allToy.key}
+                                    allToy={allToy}
+                                ></AllToysRow>
+                            ))}
                      </tbody>
                 </table>
             </div>
