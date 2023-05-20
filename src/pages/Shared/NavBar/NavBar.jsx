@@ -52,7 +52,7 @@ const NavBar = () => {
                     user ? <>
                     <div className="avatar">
                     <div className="w-10 me-2 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        
+                        <img src={user?.photoURL} alt="" />
                     </div>
                     </div>
                     <Link onClick={handleLogOut} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Sign out</Link>
