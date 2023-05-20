@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react";
-import AllToysRow from "./AllToysRow";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
+import MyToysRow from "./MyToysRow";
 
-const AllToys = () => {
-    const [allToys, setAllToys] = useState([]);
 
-    useEffect(() => {
-        fetch('https://figure-mania-server.vercel.app/toys')
-            .then(res => res.json())
-            .then(data => setAllToys(data.slice(0, 20)));
-    }, [])
+const MyToys = () => {
+    const {user} = useContext(AuthContext);
+    const [myToys, setMyToys] = useState([]);
 
+    const url = `http://localhost:5000/toys?email=${user?.email}`;
+     useEffect( () => {
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setMyToys(data))
+     }, [])
     return (
         <div>
-            <h1>This Is ALL Toys Page</h1>
+            <h1>This Is My Toys Page</h1>
             <div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -29,11 +32,11 @@ const AllToys = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {allToys.map(allToy => (
-                                <AllToysRow
-                                    key={allToy.key}
-                                    allToy={allToy}
-                                ></AllToysRow>
+                    {myToys.map(myToy => (
+                                <MyToysRow
+                                key={myToy.key}
+                                myToy={myToy}
+                                ></MyToysRow>
                             ))}
                      </tbody>
                 </table>
@@ -44,4 +47,4 @@ const AllToys = () => {
     );
 };
 
-export default AllToys;
+export default MyToys;

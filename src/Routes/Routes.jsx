@@ -8,6 +8,7 @@ import AllToys from "../pages/Home/AllToys/AllToys";
 import PrivateRoute from "./PrivateRoute";
 import AddToys from "../pages/AddToys/AddToys";
 import DetailsPage from "../pages/DetailsPage/DetailsPage";
+import MyToys from "../pages/MyToys/MyToys";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +42,11 @@ const router = createBrowserRouter([
         {
           path: 'details/:id',
           element: <DetailsPage></DetailsPage>,
-          loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+          loader: ({params}) => fetch(`https://figure-mania-server.vercel.app/toys/${params.id}`)
+        },
+        {
+          path: 'myToys',
+          element: <PrivateRoute><MyToys></MyToys></PrivateRoute>
         }
       ]
     },

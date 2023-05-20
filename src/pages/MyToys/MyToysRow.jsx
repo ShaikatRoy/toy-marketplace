@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 
-const AllToysRow = ({allToy}) => {
-
-    const { _id, userName, toyName, photo, subCategory, price, quantity  } = allToy;
+const MyToysRow = ({myToy}) => {
+    const { _id, userName, toyName, photo, subCategory, price, quantity  } = myToy;
 
     return (
         <tr>
@@ -33,4 +32,4 @@ const AllToysRow = ({allToy}) => {
     );
 };
 
-export default AllToysRow;
+export default MyToysRow;

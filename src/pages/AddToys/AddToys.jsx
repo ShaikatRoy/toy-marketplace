@@ -30,7 +30,7 @@ const AddToys = () => {
         }
         console.log(toy);
 
-        fetch('http://localhost:5000/toys', {
+        fetch('https://figure-mania-server.vercel.app/toys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
