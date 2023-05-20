@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AllToysCard from "./AllToysCard";
+import AllToysRow from "./AllToysRow";
 
 const AllToys = () => {
     const [allToys, setAllToys] = useState([]);
@@ -19,11 +19,7 @@ const AllToys = () => {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
-                            </th>
+                            <th>Picture</th>
                             <th>UserName</th>
                             <th>Toy Name</th>
                             <th>Sub-category</th>
@@ -34,12 +30,10 @@ const AllToys = () => {
                     </thead>
                     <tbody>
                        {
-                            {
-                                allToys.map(allToy => <AllToysCard
-                                    key={allToy.key}
-                                    allToy={allToy}
-                                ></AllToysCard>)
-                            }
+                           allToys.map(allToy => <AllToysRow
+                                key={allToy.key}
+                                allToy={allToy}
+                           ></AllToysRow>)
                        }
                      </tbody>
                 </table>
