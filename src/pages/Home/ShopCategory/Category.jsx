@@ -23,15 +23,15 @@ const Category = () => {
   return (
     <Tabs selectedIndex={activeTab} onSelect={handleTabSelect}>
       <h2 className="text-center text-3xl my-10 font-bold"  data-aos="fade-right">Shop by Category</h2>
-      <TabList className="tabs tabs-boxed flex justify-center"> {/* Added 'flex' and 'justify-center' classes */}
+      <TabList className="tabs flex justify-center">
         {uniqueSubCategories.map((subCategory) => (
-          <Tab key={subCategory}>{subCategory}</Tab>
+          <Tab className=' btn py-2 px-5 mx-3 rounded-lg'  key={subCategory}>{subCategory}</Tab>
         ))}
       </TabList>
 
       {uniqueSubCategories.map((subCategory) => (
         <TabPanel key={subCategory}>
-          <div className="card-grid grid grid-cols-3"> {/* Added 'grid' and 'grid-cols-3' classes */}
+          <div className="card-grid grid grid-cols-3">
             {categories
               .filter((item) => item.subCategory === subCategory)
               .map((toy) => (
