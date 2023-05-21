@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 
 const Category = () => {
@@ -21,7 +22,7 @@ const Category = () => {
 
   return (
     <Tabs selectedIndex={activeTab} onSelect={handleTabSelect}>
-      <h2 className="text-center font-bold">Shop by Category</h2>
+      <h2 className="text-center text-3xl my-10 font-bold"  data-aos="fade-right">Shop by Category</h2>
       <TabList className="tabs tabs-boxed flex justify-center"> {/* Added 'flex' and 'justify-center' classes */}
         {uniqueSubCategories.map((subCategory) => (
           <Tab key={subCategory}>{subCategory}</Tab>
@@ -34,15 +35,19 @@ const Category = () => {
             {categories
               .filter((item) => item.subCategory === subCategory)
               .map((toy) => (
-                <div className="card" key={toy._id}>
+                <div className="card shadow-lg mt-5" key={toy._id}>
                   <figure>
                     <img src={toy.photo} alt={toy.toyName} />
                   </figure>
                   <div className="card-body">
                     <h2 className="card-title">{toy.toyName}</h2>
-                    <p>{toy.description}</p>
+                    <p>{toy.price}</p>
+                    <p>{toy.rating}</p>
                     <div className="card-actions justify-end">
-                      <button className="btn btn-primary">Buy Now</button>
+                      <Link to={`/details/${toy._id}`}>
+                      <button className="btn btn-primary">View Details</button>
+                      </Link>
+                     
                     </div>
                   </div>
                 </div>
