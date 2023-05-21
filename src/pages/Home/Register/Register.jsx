@@ -14,10 +14,10 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const url = form.photo.value;
-        console.log(name, email, password, url);
+        const photoURL = form.photoURL.value;
+        console.log(name, email, password, photoURL);
         
-        createUser(email, password)
+        createUser(email, password, photoURL)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
@@ -60,7 +60,7 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text">Photo URL</span>
                         </label>
-                        <input type="url" name="photo" placeholder="photo url" className="input input-bordered" required/>
+                        <input type="url" name="photoURL" placeholder="photo url" className="input input-bordered" required/>
                     </div>
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Register</button>

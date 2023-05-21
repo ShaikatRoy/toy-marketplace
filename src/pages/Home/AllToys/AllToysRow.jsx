@@ -23,7 +23,7 @@ const AllToysRow = ({allToy}) => {
         
         <td>{subCategory}</td>
         <td>${price}</td>
-        <td>${quantity}</td>
+        <td>{quantity}</td>
         <td>
          <Link to={`/details/${_id}`}>
              <button className="btn btn-primary">View Details</button>

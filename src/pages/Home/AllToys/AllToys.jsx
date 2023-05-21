@@ -5,7 +5,7 @@ const AllToys = () => {
     const [allToys, setAllToys] = useState([]);
 
     useEffect(() => {
-        fetch('https://figure-mania-server.vercel.app/toys')
+        fetch('http://localhost:5000/toys')
             .then(res => res.json())
             .then(data => setAllToys(data.slice(0, 20)));
     }, [])
