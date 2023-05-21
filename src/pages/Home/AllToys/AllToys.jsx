@@ -24,7 +24,7 @@ const AllToys = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center my-6">All Toys Page</h1>
+      <h1 className="text-3xl font-bold text-center my-6">Our Toys</h1>
       <div className="flex mb-4">
         <input
           type="text"

@@ -31,7 +31,7 @@ const Category = () => {
 
       {uniqueSubCategories.map((subCategory) => (
         <TabPanel key={subCategory}>
-          <div className="card-grid grid grid-cols-3">
+          <div className="card-grid grid md:grid-cols-3">
             {categories
               .filter((item) => item.subCategory === subCategory)
               .map((toy) => (

@@ -27,6 +27,7 @@ const PhotoGallery = () => {
                                     className="hover:scale-105"
                                 />
                             </div>
+                            
                         ))}
                     </Masonry>
                 </ResponsiveMasonry>
