@@ -22,7 +22,7 @@ const Category = () => {
 
   return (
     <Tabs selectedIndex={activeTab} onSelect={handleTabSelect}>
-      <h2 className="text-center text-3xl my-10 font-bold"  data-aos="fade-right">Shop by Category</h2>
+      <h2 className="text-center text-4xl my-10 font-bold"  data-aos="fade-right">Shop by Category</h2>
       <TabList className="tabs flex justify-center">
         {uniqueSubCategories.map((subCategory) => (
           <Tab className=' btn py-2 px-5 mx-3 rounded-lg'  key={subCategory}>{subCategory}</Tab>

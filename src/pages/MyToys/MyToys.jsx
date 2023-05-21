@@ -3,12 +3,14 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import MyToysRow from "./MyToysRow";
 import Swal from 'sweetalert2';
+import useTitle from "../../hocks/useTitle";
 
 
 const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [myToys, setMyToys] = useState([]);
     const [sortOrder, setSortOrder] = useState('asc');
+    useTitle('Mytoys')
 
     useEffect(() => {
         const url = `http://localhost:5000/toys?email=${user?.email}&sort=${sortOrder}`;
