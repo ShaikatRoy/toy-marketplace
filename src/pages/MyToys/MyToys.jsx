@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import MyToysRow from "./MyToysRow";
+import Swal from 'sweetalert2';
 
 
 const MyToys = () => {
@@ -18,23 +19,39 @@ const MyToys = () => {
     }, [sortOrder, user]);
 
     const handleDelete = id => {
-        const proceed = confirm('Are you sure you want to delete'); //use sweet alert
-        if (proceed) {
+        Swal.fire({
+          title: 'Are you sure?',
+          text: 'You are about to delete the toy',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Delete',
+          cancelButtonText: 'Cancel',
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6'
+        }).then(result => {
+          if (result.isConfirmed) {
             fetch(`http://localhost:5000/toys/${id}`, {
-                method: 'DELETE'
+              method: 'DELETE'
             })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    if (data.deletedCount > 0) {
-                        alert('deleted successful');
-                        const remaining = myToys.filter(myToy => myToy._id !== id);
-                        setMyToys(remaining);
-                    }
-
-                })
-        }
-    }
+              .then(res => res.json())
+              .then(data => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                  Swal.fire(
+                    'Deleted!',
+                    'The toy has been deleted.',
+                    'success'
+                  );
+                  const remaining = myToys.filter(myToy => myToy._id !== id);
+                  setMyToys(remaining);
+                }
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          }
+        });
+      };
     
     
     const toggleSortOrder = () => {

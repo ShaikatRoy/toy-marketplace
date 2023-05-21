@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const UpdateToy = () => {
     const update = useLoaderData();
@@ -28,6 +29,12 @@ const UpdateToy = () => {
           .then(res => res.json())
           .then(data => {
             console.log(data);
+            Swal.fire(
+                'Good job!',
+                'Product Updated successfully!',
+                'success'
+              )
+              form.reset();
           })
           .catch(error => {
             console.error(error);
