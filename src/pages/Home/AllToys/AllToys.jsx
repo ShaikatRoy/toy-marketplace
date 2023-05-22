@@ -9,11 +9,12 @@ const AllToys = () => {
   useTitle('AllToys');
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://figure-mania-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
-        setAllToys(data.slice(0, 20));
+        setAllToys(data)
         setFilteredToys(data.slice(0, 20));
+        // console.log(data)
       });
   }, []);
 

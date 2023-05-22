@@ -19,7 +19,7 @@ const UpdateToy = () => {
           description
         };
         
-        fetch(`http://localhost:5000/toys/${update._id}`, {
+        fetch(`https://figure-mania-server.vercel.app/toys/${update._id}`, {
           method: 'PATCH',
           headers: {
             'content-type': 'application/json'

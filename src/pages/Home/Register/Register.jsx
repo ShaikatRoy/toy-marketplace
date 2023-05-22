@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import useTitle from "../../../hocks/useTitle";
 
 const Register = () => {
     const { user, createUser } = useContext(AuthContext);
     console.log(user, createUser)
+    const navigate = useNavigate();
     useTitle('Home');
 
     const [error, setError] = useState(null);
@@ -24,6 +25,7 @@ const Register = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 form.reset();
+                navigate('/');
             })
             .catch(error => {
                 setError(error.message);

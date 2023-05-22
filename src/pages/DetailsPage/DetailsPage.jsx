@@ -1,10 +1,13 @@
 import { useLoaderData } from "react-router-dom";
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
+
 
 const DetailsPage = () => {
   const toy = useLoaderData();
   const { photo, toyName, userName, email, subCategory, price, rating, quantity, description } = toy;
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl">
+    <div className="card lg:card-side bg-base-100 shadow-xl my-10">
       <figure>
         <img src={photo} alt="Album" className="lg:h-50 lg:w-96 object-contain p-5 ms-10" />
       </figure>
@@ -14,8 +17,11 @@ const DetailsPage = () => {
         <p>Seller Name: {userName}</p>
         <p>Contact: {email}</p>
         <p>Price: <span className="font-bold">{price}$</span></p>
-        <p>Rating: {rating}</p>
-        <p>Available quantity: {quantity}</p>
+        <div className="flex">
+        <Rating style={{ maxWidth: 140 }} value={rating} readOnly />
+        <p className="ms-2">Rating: {rating}</p>
+        </div>
+          <p>Available quantity: {quantity}</p>
         <p><span className="font-semibold">About:</span> {description}</p>
         <div className="mt-4">
           <button className="btn btn-primary">Order Now</button>

@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from 'sweetalert2'
+import useTitle from "../../hocks/useTitle";
 
 const AddToys = () => {
     const { user } = useContext(AuthContext);
+    useTitle('addAtoy');
 
     const handleAddToy = event => {
         event.preventDefault();
@@ -31,7 +33,7 @@ const AddToys = () => {
         }
         console.log(toy);
 
-        fetch('http://localhost:5000/toys', {
+        fetch('https://figure-mania-server.vercel.app/toys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -51,7 +53,7 @@ const AddToys = () => {
     }
 
     return (
-        <div>
+        <div className="my-10">
             <h2 className="text-center text-3xl font-bold mb-5">Add your toys here</h2>
             <form onSubmit={handleAddToy}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { FaGoogle } from 'react-icons/fa';
 import useTitle from "../../../hocks/useTitle";
@@ -7,6 +7,7 @@ import useTitle from "../../../hocks/useTitle";
 const Login = () => {
     const { signIn, signInWithGoogle } = useContext(AuthContext);
     const [error, setError] = useState(null); 
+    const navigate = useNavigate();
     const location = useLocation();
     useTitle('Login')
 
@@ -23,7 +24,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 form.reset();
-                Navigate(from, { replace: true})
+                navigate(from, { replace: true})
             })
             .catch(error => {
                 setError(error.message);
@@ -35,7 +36,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                Navigate(from, { replace: true})
+                navigate(from, { replace: true})
             })
             .catch(error => {
                 setError(error.message); 

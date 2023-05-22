@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
+
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://figure-mania-server.vercel.app/toys")
       .then((res) => res.json())
       .then((result) => {
         setCategories(result);
@@ -41,8 +44,12 @@ const Category = () => {
                   </figure>
                   <div className="card-body">
                     <h2 className="card-title">{toy.toyName}</h2>
-                    <p>{toy.price}</p>
-                    <p>{toy.rating}</p>
+                    <p>Price: <span className="font-bold">${toy.price}</span></p>
+                  <div className="flex">
+
+                  <Rating style={{ maxWidth: 140 }} value={toy.rating} readOnly />
+                  <p className="ms-2">{toy.rating}</p>
+                  </div>
                     <div className="card-actions justify-end">
                       <Link to={`/details/${toy._id}`}>
                       <button className="btn btn-primary">View Details</button>

@@ -13,7 +13,7 @@ const MyToys = () => {
     useTitle('Mytoys')
 
     useEffect(() => {
-        const url = `http://localhost:5000/toys?email=${user?.email}&sort=${sortOrder}`;
+        const url = `https://figure-mania-server.vercel.app/toys?email=${user?.email}&sort=${sortOrder}`;
 
         fetch(url)
             .then((res) => res.json())
@@ -32,7 +32,7 @@ const MyToys = () => {
           cancelButtonColor: '#3085d6'
         }).then(result => {
           if (result.isConfirmed) {
-            fetch(`http://localhost:5000/toys/${id}`, {
+            fetch(`https://figure-mania-server.vercel.app/toys/${id}`, {
               method: 'DELETE'
             })
               .then(res => res.json())
@@ -62,11 +62,13 @@ const MyToys = () => {
     };
 
     return (
-        <div>
-            <h1 className="text-3xl font-bold text-center my-6">Your Toys</h1>
+        <div className="my-10">
+            <h1 className="text-3xl font-bold text-center mb-3">Your Toys</h1>
             <div>
                 <div className="overflow-x-auto w-full">
+                <div className="flex items-center my-5">
                 <button className="btn btn-primary mx-auto" onClick={toggleSortOrder}>Sort Order</button>
+                </div>
 
                     <table className="table w-full">
                         {/* head */}

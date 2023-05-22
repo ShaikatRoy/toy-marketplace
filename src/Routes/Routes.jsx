@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         {
           path: 'details/:id',
           element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+          loader: ({params}) => fetch(`https://figure-mania-server.vercel.app/toys/${params.id}`)
         },
         {
           path: 'myToys',
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         {
           path: 'updateToy/:id',
           element: <UpdateToy></UpdateToy>,
-          loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+          loader: ({params}) => fetch(`https://figure-mania-server.vercel.app/toys/${params.id}`)
         },
         
         

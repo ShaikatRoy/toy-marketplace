@@ -5,12 +5,15 @@ import Category from "../ShopCategory/Category";
 import PhotoGallery from "../PhotoGallery/PhotoGallery";
 import Satstic from "../Satstic/Satstic";
 import Brands from "../Brands/Brands";
+import useTitle from "../../../hocks/useTitle";
+
 
 
 
 const Home = () => {
     const {user} = useContext(AuthContext);
     console.log(user)
+    useTitle("figure-mania");
 
     return (
         <div>

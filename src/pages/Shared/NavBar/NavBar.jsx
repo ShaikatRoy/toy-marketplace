@@ -50,7 +50,7 @@ const NavBar = () => {
             <div className="navbar-end">
                 {
                     user ? <>
-                    <div className="avatar">
+                    <div className="avatar tooltip tooltip-left"  data-tip={user.displayName}>
                     <div className="w-10 me-2 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img src={user?.photoURL} alt="" />
                     </div>
