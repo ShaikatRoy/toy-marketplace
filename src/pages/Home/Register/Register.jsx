@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import useTitle from "../../../hocks/useTitle";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
     const { user, createUser } = useContext(AuthContext);
@@ -23,6 +24,7 @@ const Register = () => {
         createUser(email, password, photoURL)
             .then(result => {
                 const loggedUser = result.user;
+                updateUserData(loggedUser, name, photoURL);
                 console.log(loggedUser);
                 form.reset();
                 navigate('/');
@@ -31,6 +33,19 @@ const Register = () => {
                 setError(error.message);
             });
     };
+
+    const updateUserData = (user, name, photo) => {
+        updateProfile(user, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => {
+            console.log("user name and url updated");
+          })
+          .catch((error) => {
+            setError(error.message);
+          });
+      };
 
     return (
         <div className="hero min-h-screen bg-base-200">
