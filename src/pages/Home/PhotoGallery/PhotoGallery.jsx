@@ -12,14 +12,14 @@ const images = [
 const PhotoGallery = () => {
     return (
         <>
-            <div className="p-5 mt-5">
+            <div className="p-5 mt-5 relative">
                 <h2 className="text-3xl font-bold text-center my-5" data-aos="fade-right">Hot Collection</h2>
                 <ResponsiveMasonry
                     columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
                 >
                     <Masonry gutter="20px">
                         {images.map((image, i) => (
-                            <div className="group" key={i}>
+                            <div className="group" key={i} data-aos="flip-left">
                                 <img
                                     src={image}
                                     style={{ width: "90%", display: "block" }}
@@ -27,10 +27,13 @@ const PhotoGallery = () => {
                                     className="hover:scale-105"
                                 />
                             </div>
-                            
                         ))}
                     </Masonry>
                 </ResponsiveMasonry>
+                <div className="flex justify-center mt-5" data-aos="fade-up"
+     data-aos-duration="1500">
+                    <button className="btn btn-primary z-10 absolute bottom-48 px-20 py-3">Order Now</button>
+                </div>
             </div>
         </>
     );

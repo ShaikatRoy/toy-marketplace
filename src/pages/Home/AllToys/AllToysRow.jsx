@@ -7,9 +7,9 @@ const AllToysRow = ({allToy}) => {
     return (
         <tr>
             <td>
-        <div className="avatar">
-                <div className="rounded w-36 h-28">
-                    {photo && <img src={photo} alt="Avatar Tailwind CSS Component" className="" />}
+        <div>
+                <div >
+                    {photo && <img src={photo} alt="Avatar Tailwind CSS Component" className="w-20 h-28 object-scale-down" />}
                 </div>
             </div>
         </td>
