@@ -6,6 +6,7 @@ import PhotoGallery from "../PhotoGallery/PhotoGallery";
 import Satstic from "../Satstic/Satstic";
 import Brands from "../Brands/Brands";
 import useTitle from "../../../hocks/useTitle";
+import TopChoice from "../TopChoice/TopChoice";
 
 
 
@@ -21,6 +22,7 @@ const Home = () => {
             <PhotoGallery></PhotoGallery>
             <Brands></Brands>
             <Category></Category>
+            <TopChoice></TopChoice>
             <Satstic></Satstic>
         </div>
     );
